@@ -20,15 +20,35 @@ const studentLoginAction = function () {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(studentLoginRequest)
-        }).then(response => response.json())
+        }).then(res => res.json())
             .then(json => {
-                // 처리
                 const loginError = document.getElementById('loginError');
                 if (json['result'] === false) {
                     loginError.classList.remove('d-none');
                 } else {
-                    location.href = '/portal/mainPage';
+                    // redirectUrl이 있으면 해당 주소로, 없으면 기본값
+                    const params = new URLSearchParams(window.location.search);
+                    const redirectUrl = params.get('redirectUrl') || '/portal/mainPage';
+                    location.href = redirectUrl;
                 }
             });
+
+
+        // fetch(`/api/portal/auth/studentLoginProcess`, {
+        //     method: 'post',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(studentLoginRequest)
+        // }).then(response => response.json())
+        //     .then(json => {
+        //         // 처리
+        //         const loginError = document.getElementById('loginError');
+        //         if (json['result'] === false) {
+        //             loginError.classList.remove('d-none');
+        //         } else {
+        //             location.href = '/portal/mainPage';
+        //         }
+        //     });
     }
 };

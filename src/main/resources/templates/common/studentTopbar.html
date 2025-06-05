@@ -1,0 +1,44 @@
+<div th:fragment="studentTopbar">
+
+    <script src="/common/studentTopbar.js"></script>
+
+    <div style="min-height: 10vh;" class="d-flex align-items-center">
+        <div class="w-100">
+            <div class="row mt-2 align-items-center" style="color: rgb(30, 75, 147)">
+                <div class="col-1 ms-4 text-center fw-bold" style="font-size: 1.5rem">
+                    대학교
+                </div>
+                <div class="col">
+                    <div class="row text-center fw-bold" style="color: black">
+                        <div class="col-3"></div>
+                        <div id="colJob" class="col-auto mx-auto">
+                            취업 / 창업
+                        </div>
+                        <div id="colBarrierFree" class="col-auto mx-auto">
+                            장애학생 지원
+                        </div>
+                        <div id="colInternship"  class="col-auto mx-auto">
+                            현장실습
+                        </div>
+                        <div id="colResidence" class="col-auto mx-auto">
+                            생활관
+                        </div>
+                        <div id="colLifeEdu" class="col-auto mx-auto">
+                            평생교육원
+                        </div>
+                        <div class="col-3"></div>
+                    </div>
+                </div>
+                <div id="portalBtn" class="col-auto mx-auto">
+                    Portal
+                </div>
+                <div id="studentLoginBtn" class="col-1 me-4 text-center">
+                    Login
+                </div>
+                <div id="studentLogoutBtn" class="col-1 me-4 text-center d-none">
+                    Logout
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

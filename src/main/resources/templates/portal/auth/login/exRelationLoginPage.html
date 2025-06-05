@@ -25,7 +25,8 @@
 
         .container-fluid {
             display: grid;
-            grid-template-rows: 6.1vh 1fr 6.1vh; /* 위/아래 고정, 가운데 자동 */
+            /*grid-template-rows: 6.1vh 1fr 6.1vh; !* 위/아래 고정, 가운데 자동 *!*/
+            grid-template-rows: 1fr; /* 위/아래 고정, 가운데 자동 */
             height: 100vh;
         }
 
@@ -49,9 +50,9 @@
 <body>
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col top_bottom_row"></div>
-    </div>
+<!--    <div class="row">-->
+<!--        <div class="col top_bottom_row"></div>-->
+<!--    </div>-->
 
     <div class="row" style="height: 100%;">
         <div class="col-3" style=" height: 100%;"></div>
@@ -162,9 +163,9 @@
 
     </div>
 
-    <div class="row" id="footerRow">
-        <div class="col top_bottom_row"></div>
-    </div>
+<!--    <div class="row" id="footerRow">-->
+<!--        <div class="col top_bottom_row"></div>-->
+<!--    </div>-->
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"

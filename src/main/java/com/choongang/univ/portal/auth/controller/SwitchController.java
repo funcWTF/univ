@@ -1,6 +1,7 @@
 package com.choongang.univ.portal.auth.controller;
 
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -37,7 +38,8 @@ public class SwitchController {
     }
 
     @RequestMapping("job")
-    public String jobStudentPage() {
+    public String jobStudentPage(
+    ) {
         return "/job/jobStudentPage";
     }
     @RequestMapping("barrierFree")
@@ -51,5 +53,10 @@ public class SwitchController {
     @RequestMapping("residence")
     public String residenceStudentPage() {
         return "/residence/residenceStudentPage";
+    }
+
+    @RequestMapping("sample")
+    public String samplePage() {
+        return "/portal/home/sample";
     }
 }

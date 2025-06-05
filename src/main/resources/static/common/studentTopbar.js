@@ -3,6 +3,7 @@ window.addEventListener("DOMContentLoaded", () => {
     centerBtnAction();
     studentSessionCheck();
     studentLogoutAction();
+    portalBtnAction();
 });
 
 // const studentLoginBtnAction = function () {
@@ -72,5 +73,12 @@ const studentLogoutAction = function () {
                     document.getElementById('studentLogoutBtn').classList.add('d-none');
                 }
             });
+    };
+};
+
+const portalBtnAction = function () {
+    const portalBtn = document.getElementById('portalBtn');
+    portalBtn.onclick = () => {
+        location.href = `/portal/mainPage`;
     };
 };

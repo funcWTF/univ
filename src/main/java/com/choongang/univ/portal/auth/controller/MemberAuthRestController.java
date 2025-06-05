@@ -27,9 +27,7 @@ public class MemberAuthRestController {
             @RequestBody ExRelationDto exRelationDtoRequest,
             HttpSession session
     ) {
-        log.info(String.valueOf(exRelationDtoRequest));
         ExRelationDto exRelationDto = memberAuthService.loginExRelation(exRelationDtoRequest);
-        log.info(String.valueOf(exRelationDto));
 
         if (exRelationDto == null) {
             return Map.of("result", false);
@@ -43,9 +41,8 @@ public class MemberAuthRestController {
     public Map<String, Object> adminIdCheck(
             @ModelAttribute AdminDto adminDtoRequest
     ) {
-        log.info(String.valueOf(adminDtoRequest));
         AdminDto adminDto = memberAuthService.validateAdminIdDuplicate(adminDtoRequest);
-        log.info(String.valueOf(adminDto));
+
         if (adminDto == null) {
             return Map.of("result", true);
         } else {
@@ -62,22 +59,41 @@ public class MemberAuthRestController {
         return Map.of();
     }
 
+
     @RequestMapping("studentLoginProcess")
     public Map<String, Object> studentLoginProcess(
             @RequestBody StudentDto studentDtoRequest,
             HttpSession session
     ) {
-        log.info(String.valueOf(studentDtoRequest));
-
         StudentDto studentDto = memberAuthService.loginStudentDto(studentDtoRequest);
-        log.info(String.valueOf(studentDto));
 
         if (studentDto == null) {
             return Map.of("result", false);
         } else {
             session.setAttribute("studentLoginInfo", studentDto);
+            Object object = session.getAttribute("studentLoginInfo");
             return Map.of("result", studentDto);
         }
+    }
+
+    @RequestMapping("studentSessionCheck")
+    public Map<String, Object> studentSessionCheck(
+            HttpSession session
+    ) {
+        StudentDto studentDto = (StudentDto) session.getAttribute("studentLoginInfo");
+
+        if (studentDto != null) {
+            return Map.of("login", true, "user", studentDto);
+        } else {
+            return Map.of("login", false);
+        }
+
+    }
+
+    @PostMapping("studentLogout")
+    public Map<String, Object> studentLogout(HttpSession session) {
+        session.invalidate(); // 세션 삭제
+        return Map.of("result", true);
     }
 
 }
