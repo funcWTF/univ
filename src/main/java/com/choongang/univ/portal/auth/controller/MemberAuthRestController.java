@@ -37,8 +37,8 @@ public class MemberAuthRestController {
         }
     }
 
-    @RequestMapping("adminIdCheck")
-    public Map<String, Object> adminIdCheck(
+    @RequestMapping("adminIdDuplicateCheck")
+    public Map<String, Object> adminIdDuplicateCheck(
             @ModelAttribute AdminDto adminDtoRequest
     ) {
         AdminDto adminDto = memberAuthService.validateAdminIdDuplicate(adminDtoRequest);
@@ -52,10 +52,13 @@ public class MemberAuthRestController {
 
     @RequestMapping("adminRegisterProcess")
     public Map<String, Object> adminRegisterProcess(
-            @ModelAttribute AdminDto adminDtoRequest,
-            @RequestParam("idPhotoLoc") MultipartFile idPhotoLoc
+            @ModelAttribute("adminRegRequest") AdminDto adminDtoRequest
+//            @RequestParam("photoLoc") MultipartFile idPhotoLoc
     ) {
+//        log.info(String.valueOf(adminDtoRequest));
+        memberAuthService.registerAdmin(adminDtoRequest);
         log.info(String.valueOf(adminDtoRequest));
+
         return Map.of();
     }
 

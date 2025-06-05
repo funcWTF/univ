@@ -5,12 +5,6 @@ window.addEventListener("DOMContentLoaded", () => {
     studentLogoutAction();
 });
 
-// const studentLoginBtnAction = function () {
-//     const studentLoginBtn = document.getElementById('studentLoginBtn')
-//     studentLoginBtn.onclick = () => {
-//         location.href = '/portal/studentLoginPage';
-//     };
-// };
 
 const studentLoginBtnAction = function () {
     const studentLoginBtn = document.getElementById('studentLoginBtn')

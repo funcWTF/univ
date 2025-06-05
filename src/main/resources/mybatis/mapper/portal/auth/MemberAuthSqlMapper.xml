@@ -19,4 +19,12 @@
         from student
         where student_id = #{studentId} and password = #{password};
     </select>
+
+    <insert id="insertAdmin">
+        <selectKey keyProperty="id" resultType="int" order="AFTER">
+            select max(id) from administrator;
+        </selectKey>
+        insert into administrator (admin_id, password, name, registration_id, birth, email, phone, address, id_photo_loc,center)
+        values (#{adminId}, #{password}, #{name}, #{registrationId}, #{birth}, #{email}, #{phone}, #{address}, #{idPhotoLoc}, #{center});
+    </insert>
 </mapper>

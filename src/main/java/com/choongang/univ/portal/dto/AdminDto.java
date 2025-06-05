@@ -18,7 +18,8 @@ public class AdminDto {
     private String email;
     private String phone;
     private String address;
-    private MultipartFile idPhotoLoc;
+    private MultipartFile idPhotoFile;
+    private String idPhotoLoc;
     private String center;
     private LocalDateTime createdAt;
 }
