@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
+    <title>adminRegisterPage</title>
+
+    <script src="/portal/js/auth/register/adminRegister.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, .container-fluid {
+            height: 100vh;
+            min-height: 100vh;
+        }
+
+        .container-fluid {
+            display: grid;
+            grid-template-rows: 6.1vh 1fr 6.1vh; /* 위/아래 고정, 가운데 자동 */
+            height: 100vh;
+        }
+
+        .top_bottom_row {
+            background-color: rgb(33, 43, 53);
+        }
+
+        #footerRow {
+            grid-row: 3;
+        }
+
+        /* input 태그에 포커스가 갔을 때 파란색 테두리 제거 */
+        .form-control:focus {
+            outline: none; /* 파란색 아웃라인 제거 */
+            box-shadow: none; /* 부트스트랩이 제공하는 box-shadow도 제거 */
+            border-color: #ced4da; /* 원래 테두리 색상으로 유지 (선택 사항) */
+        }
+
+        .form-select:focus {
+            outline: none; /* 파란색 아웃라인 제거 */
+            box-shadow: none; /* 부트스트랩이 제공하는 box-shadow도 제거 */
+            border-color: #ced4da; /* 원래 테두리 색상으로 유지 (선택 사항) */
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col top_bottom_row"></div>
+    </div>
+
+    <div class="row" style="height: 100%;">
+        <div class="col" style=" height: 100%;"></div>
+
+        <div class="col-8 d-flex flex-column justify-content-center"
+             style="padding: 0; height: 100%;">
+
+            <div class="row h-100 align-items-center">
+
+                <div class="col border border-1 rounded">
+                    <div class="row ">
+
+                        <div class="col">
+                            <div class="row">
+                                <div class="col ">
+                                    <div class="row">
+                                        <div class="col text-center">
+                                            학교 사진
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col py-5">
+                            <div class="row">
+                                <div class="col text-center" style="font-size: 1.5rem">
+                                    센터 관리자 계정 등록
+                                </div>
+                            </div>
+
+
+                            <div class="row mt-4">
+                                <div class="col-2"></div>
+                                <div class="col box-height border border-1 rounded">
+                                    <div class="row align-items-center">
+                                        <div class="col-1 text-center">
+                                            <i class="bi bi-building"></i>
+                                        </div>
+                                        <div class="col-11">
+                                            <select id="adminCenterSelect"
+                                                    class="form-select form-select-sm border-0"
+                                                    style="color: rgb(89, 92, 94)"
+                                                    aria-label="Default select example">
+                                                <option value="" selected>소속 센터를 지정해주세요</option>
+                                                <option value="job">취업/창업 센터</option>
+                                                <option value="barrierFree">장애학생지원 센터</option>
+                                                <option value="internship">현장실습 센터</option>
+                                                <option value="residence">생활관 센터</option>
+                                                <option value="lifeEdu">평생교원원 센터</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+
+
+                            <div class="row align-items-center">
+                                <div class="col-2"></div>
+                                <div id="colCenterError" class="col px-0 d-none text-start"
+                                     style="font-size: 0.7rem; color: rgb(222, 44, 65)">
+                                    <i class="bi bi-dot"></i> 소속 센터 : 필수 정보입니다.
+                                </div>
+                            </div>
+
+                            <div class="row mt-2">
+                                <div class="col-2"></div>
+                                <div class="col box-height border border-1 rounded">
+                                    <div class="row align-items-center">
+                                        <div class="col-1 text-center">
+                                            <i class="bi bi-person"></i>
+                                        </div>
+                                        <div class="col-11">
+                                            <input id="adminIdInput" type="text"
+                                                   class="form-control form-control-sm border-0 shadow-none"
+                                                   placeholder="아이디">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+
+                            <div class="row align-items-center">
+                                <div class="col-2"></div>
+                                <div id="colIdError" class="col px-0 d-none text-start"
+                                     style="font-size: 0.7rem; color: rgb(222, 44, 65)">
+                                    <i class="bi bi-dot"></i> 이미 사용 중인 아이디입니다.
+                                </div>
+                            </div>
+
+                            <div class="row mt-2">
+                                <div class="col-2"></div>
+                                <div class="col box-height border border-1 rounded">
+                                    <div class="row align-items-center">
+                                        <div class="col-1 text-center">
+                                            <i class="bi bi-lock"></i>
+                                        </div>
+                                        <div class="col-11">
+                                            <input id="adminPasswordInput" type="password"
+                                                   class="form-control form-control-sm border-0 shadow-none"
+                                                   placeholder="패스워드">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+
+                            <div class="row mt-2">
+                                <div class="col-2"></div>
+                                <div class="col box-height border border-1 rounded">
+                                    <div class="row align-items-center">
+                                        <div class="col-1 text-center">
+                                            <i class="bi bi-person-badge"></i>
+                                        </div>
+                                        <div class="col-11">
+                                            <input id="adminNameInput" type="text"
+                                                   class="form-control form-control-sm border-0 shadow-none"
+                                                   placeholder="이름">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+
+                            <div class="row mt-2">
+                                <div class="col-2"></div>
+                                <div class="col box-height border border-1 rounded">
+                                    <div class="row align-items-center">
+                                        <div class="col-1 text-center">
+                                            <i class="bi bi-person-vcard"></i>
+                                        </div>
+                                        <div class="col-5 text-center">
+                                            <input id="adminRegisterIdFirstInput"
+                                                   type="text"
+                                                   class="form-control form-control-sm border-0 shadow-none"
+                                                   placeholder="주민번호 앞자리"
+                                                   maxlength="6"
+                                                   pattern="\d{6}"
+                                                   inputmode="numeric"
+                                                   autocomplete="off">
+                                        </div>
+                                        <div class="col-1 text-center">
+                                            -
+                                        </div>
+                                        <div class="col-5 text-center">
+                                            <input id="adminRegisterIdSecondInput"
+                                                   type="password"
+                                                   class="form-control form-control-sm border-0 shadow-none"
+                                                   placeholder="주민번호 뒷자리"
+                                                   maxlength="7"
+                                                   pattern="\d{7}"
+                                                   inputmode="numeric"
+                                                   autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col-2"></div>
+                                <div id="colRegistrationIdError" class="col px-0 d-none text-start"
+                                     style="font-size: 0.7rem; color: rgb(222, 44, 65)">
+                                    <i class="bi bi-dot"></i> 주민등록번호를 정확히 입력해 주세요.
+                                </div>
+                            </div>
+
+
+                            <div class="row mt-2">
+                                <div class="col-2"></div>
+                                <div class="col box-height border border-1 rounded">
+                                    <div class="row align-items-center">
+                                        <div class="col-1 text-center">
+                                            <i class="bi bi-envelope"></i>
+                                        </div>
+
+                                        <div class="col-11">
+                                            <input id="adminEmailInput" type="text"
+                                                   class="form-control form-control-sm border-0 shadow-none"
+                                                   placeholder="email">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+
+                            <div class="row mt-2">
+                                <div class="col-2"></div>
+                                <div class="col box-height border border-1 rounded">
+                                    <div class="row align-items-center">
+                                        <div class="col-1 text-center">
+                                            <i class="bi bi-phone"></i>
+                                        </div>
+
+                                        <div class="col-3 text-center">
+                                            <input id="adminPhoneFirstInput"
+                                                   type="text"
+                                                   class="form-control form-control-sm border-0 shadow-none"
+                                                   maxlength="3"
+                                                   pattern="\d{4}"
+                                                   inputmode="numeric"
+                                                   autocomplete="off" placeholder="전화">
+                                        </div>
+                                        <div class="col-1 text-center">
+                                            -
+                                        </div>
+                                        <div class="col-3 text-center">
+                                            <input id="adminPhoneSecondInput"
+                                                   type="text"
+                                                   class="form-control form-control-sm border-0 shadow-none"
+                                                   maxlength="4"
+                                                   pattern="\d{4}"
+                                                   inputmode="numeric"
+                                                   autocomplete="off">
+                                        </div>
+                                        <div class="col-1 text-center">
+                                            -
+                                        </div>
+                                        <div class="col-3 text-center">
+                                            <input id="adminPhoneThirdInput"
+                                                   type="text"
+                                                   class="form-control form-control-sm border-0 shadow-none"
+                                                   maxlength="4"
+                                                   pattern="\d{4}"
+                                                   inputmode="numeric"
+                                                   autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+
+<!--                            <div class="row mt-2">-->
+<!--                                <div class="col-2"></div>-->
+<!--                                <div class="col box-height border border-1 rounded">-->
+<!--                                    <div class="row align-items-center">-->
+<!--                                        <div class="col-1 text-center">-->
+<!--                                            <i class="bi bi-house"></i>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-11">-->
+<!--                                            <input id="adminAddressInput" type="text"-->
+<!--                                                   class="form-control form-control-sm border-0 shadow-none"-->
+<!--                                                   placeholder="주소">-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-2"></div>-->
+<!--                            </div>-->
+
+                            <div class="row mt-2">
+                                <div class="col-2"></div>
+                                <div class="col box-height border border-1 rounded">
+                                    <div class="row align-items-center">
+                                        <div class="col-1 text-center">
+                                            <i class="bi bi-house"></i>
+                                        </div>
+                                        <div class="col-7">
+                                            <input type="text"
+                                                   id="adminRoadAddress"
+                                                   class="form-control form-control-sm border-0 shadow-none"
+                                                   placeholder="주소">
+                                        </div>
+                                        <div class="col-4">
+                                            <input type="button"
+                                                   onclick="sample4_execDaumPostcode()"
+                                                   class="form-control form-control-sm border-0 shadow-none"
+                                                   value="우편번호 찾기">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+
+<!--                            <div class="row mt-2">-->
+<!--                                <div class="col">-->
+<!--                                    <input type="text" id="sample4_postcode" placeholder="우편번호">-->
+<!--                                    <input type="text" id="sample4_jibunAddress" placeholder="지번주소">-->
+<!--                                    <span id="guide" style="color:#999;display:none"></span>-->
+<!--                                    <input type="text" id="sample4_detailAddress" placeholder="상세주소">-->
+<!--                                    <input type="text" id="sample4_extraAddress" placeholder="참고항목">-->
+
+<!--                                </div>-->
+<!--                            </div>-->
+
+
+
+                            <div class="row mt-2">
+                                <div class="col-2"></div>
+                                <div class="col box-height border border-1 rounded">
+                                    <div class="row align-items-center">
+                                        <div class="col-1 text-center">
+                                            <i class="bi bi-person-bounding-box"></i>
+                                        </div>
+                                        <div class="col-11">
+                                            <input id="adminPhotoInput" type="file" accept="image/*"
+                                                   class="form-control form-control-sm border-0 shadow-none"
+                                                   placeholder="photo">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+
+
+
+
+                            <div class="row mt-2">
+                                <div class="col-2"></div>
+                                <div id="adminRegBtn" class="col box-height border border-1 rounded">
+                                    <div class="row">
+                                        <div class="col text-center fw-light"
+                                             style="font-size: 1.4rem; color: rgb(89, 92, 94)">
+                                            등록
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col" style=" height: 100%;"></div>
+
+    </div>
+
+    <div class="row" id="footerRow">
+        <div class="col top_bottom_row"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+</body>
+</html>
