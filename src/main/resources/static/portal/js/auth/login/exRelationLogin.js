@@ -11,7 +11,7 @@ const exRelationLoginAction = function () {
             password: document.getElementById('exRelationPasswordInput').value,
         };
 
-        fetch(`/api/porter/auth/exRelationLoginProcess`, {
+        fetch(`/api/portal/auth/exRelationLoginProcess`, {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'
@@ -28,19 +28,20 @@ const exRelationLoginAction = function () {
                     // const exRelationResponse = encodeURIComponent(JSON.stringify(json['result']));
                     //
                     // console.log(exRelationResponse['center']);
+                    console.log(json['result']['center']);
 
                     if (json['result']['center'] === 'job') {
-                        location.href = `/switch/jobExRelationPage`;
+                        location.href = `/exRelation/job`;
                     } else if (json['result']['center'] === 'barrierFree') {
-                        location.href = `/switch/barrierFreeExRelationPage`;
+                        location.href = `/exRelation/barrierFree`;
                     } else if (json['result']['center'] === 'internship') {
-                        location.href = `/switch/internshipExRelationPage`;
+                        location.href = `/exRelation/internship`;
                     } else if (json['result']['center'] === 'residence') {
-                        location.href = `/switch/residenceExRelationPage`;
+                        location.href = `/exRelation/residence`;
                     } else if (json['result']['center'] === 'lifeEduStudent') {
-                        location.href = `/switch/lifeEduStudentExRelationPage`;
+                        location.href = `/exRelation/lifeEduStudent`;
                     } else if (json['result']['center'] === 'lifeEduInstructor') {
-                        location.href = `/switch/lifeEduInstructorExRelationPage`;
+                        location.href = `/exRelation/lifeEduInstructor`;
                     }
 
                 }

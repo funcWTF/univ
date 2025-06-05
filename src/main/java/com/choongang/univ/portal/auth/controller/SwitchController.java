@@ -9,31 +9,47 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("switch")
 public class SwitchController {
 
-    @RequestMapping("jobExRelationPage")
+    @RequestMapping("exRelation/job")
     public String jobExRelationPage() {
         return "/job/jobExRelationPage";
     }
-    @RequestMapping("barrierFreeExRelationPage")
+    @RequestMapping("exRelation/barrierFree")
     public String barrierFreeExRelationPage() {
         return "/barrierfree/barrierFreeExRelationPage";
     }
-    @RequestMapping("internshipExRelationPage")
+    @RequestMapping("exRelation/internship")
     public String internshipExRelationPage() {
         return "/internship/internshipExRelationPage";
     }
-    @RequestMapping("residenceExRelationPage")
+    @RequestMapping("exRelation/residence")
     public String residenceExRelationPage() {
         return "/residence/residenceExRelationPage";
     }
-    @RequestMapping("lifeEduStudentExRelationPage")
+    @RequestMapping("exRelation/lifeEduStudent")
     public String lifeEduStudentExRelationPage() {
         return "/lifeedu/lifeEduStudentExRelationPage";
     }
-    @RequestMapping("lifeEduInstructorExRelationPage")
+    @RequestMapping("exRelation/lifeEduInstructor")
     public String lifeEduInstructorExRelationPage() {
         return "/lifeedu/lifeEduInstructorExRelationPage";
+    }
+
+    @RequestMapping("job")
+    public String jobStudentPage() {
+        return "/job/jobStudentPage";
+    }
+    @RequestMapping("barrierFree")
+    public String barrierFreeStudentPage() {
+        return "/barrierfree/barrierFreeStudentPage";
+    }
+    @RequestMapping("internship")
+    public String internshipStudentPage() {
+        return "/internship/internshipStudentPage";
+    }
+    @RequestMapping("residence")
+    public String residenceStudentPage() {
+        return "/residence/residenceStudentPage";
     }
 }

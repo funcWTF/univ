@@ -21,5 +21,9 @@ public class MemberAuthController {
         return "/portal/auth/register/adminRegisterPage";
     }
 
+    @RequestMapping("studentLoginPage")
+    public String studentLoginPage() {
+        return "/portal/auth/login/studentLoginPage";
+    }
 
 }

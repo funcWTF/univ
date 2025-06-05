@@ -4,6 +4,7 @@ import com.choongang.univ.portal.auth.mapper.MemberAuthSqlMapper;
 import com.choongang.univ.portal.auth.service.MemberAuthService;
 import com.choongang.univ.portal.dto.AdminDto;
 import com.choongang.univ.portal.dto.ExRelationDto;
+import com.choongang.univ.portal.dto.StudentDto;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +15,7 @@ import java.util.Map;
 
 @Slf4j
 @RestController
-@RequestMapping("api/porter/auth")
+@RequestMapping("api/portal/auth")
 @RequiredArgsConstructor
 public class MemberAuthRestController {
 
@@ -26,10 +27,9 @@ public class MemberAuthRestController {
             @RequestBody ExRelationDto exRelationDtoRequest,
             HttpSession session
     ) {
-//        log.info(String.valueOf(exRelationDtoRequest));
-
+        log.info(String.valueOf(exRelationDtoRequest));
         ExRelationDto exRelationDto = memberAuthService.loginExRelation(exRelationDtoRequest);
-//        log.info(String.valueOf(exRelationDto));
+        log.info(String.valueOf(exRelationDto));
 
         if (exRelationDto == null) {
             return Map.of("result", false);
@@ -59,8 +59,25 @@ public class MemberAuthRestController {
             @RequestParam("idPhotoLoc") MultipartFile idPhotoLoc
     ) {
         log.info(String.valueOf(adminDtoRequest));
-
         return Map.of();
+    }
+
+    @RequestMapping("studentLoginProcess")
+    public Map<String, Object> studentLoginProcess(
+            @RequestBody StudentDto studentDtoRequest,
+            HttpSession session
+    ) {
+        log.info(String.valueOf(studentDtoRequest));
+
+        StudentDto studentDto = memberAuthService.loginStudentDto(studentDtoRequest);
+        log.info(String.valueOf(studentDto));
+
+        if (studentDto == null) {
+            return Map.of("result", false);
+        } else {
+            session.setAttribute("studentLoginInfo", studentDto);
+            return Map.of("result", studentDto);
+        }
     }
 
 }

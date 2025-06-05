@@ -13,4 +13,10 @@
         from administrator
         where admin_id = #{adminId};
     </select>
+
+    <select id="findStudentDtoForLogin">
+        select *
+        from student
+        where student_id = #{studentId} and password = #{password};
+    </select>
 </mapper>

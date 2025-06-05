@@ -47,4 +47,31 @@ create table administrator
 );
 
 insert into administrator (admin_id, password, name, register_id, birth, email, phone, address, id_photo_loc, center)
-values ('a001', '1111', '홍길동', '20000101-3111111', '2000-01-01', 'a001@gmail.com', '010-1111-2222', '어딘가', '증명사진 주소', 'job');
+values ('a001', '1111', '홍길동', '20000101-3111111', '2000-01-01', 'a001@gmail.com', '010-1111-2222', '어딘가', '증명사진 주소',
+        'job');
+
+
+drop table if exists student;
+
+create table student
+(
+    id            int primary key auto_increment,
+    major         int,
+    sub_major     int  default null,
+    student_id    varchar(20),
+    password      varchar(50),
+    name          varchar(20),
+    register_id   varchar(16),
+    birth         date,
+    email         varchar(50),
+    phone         varchar(20),
+    address       varchar(50),
+    id_photo_loc  varchar(500),
+    entrance_date date,
+    status        varchar(5),
+    grade         int,
+    created_at    date default now()
+);
+
+insert into student (student_id, password)
+values ('s001', '1111');

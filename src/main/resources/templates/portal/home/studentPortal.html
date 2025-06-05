@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
+    <title>studentPortal</title>
+
+    <script src="/portal/js/portal/studentPortal.js"></script>
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body, .container-fluid {
+            height: 100vh;
+            min-height: 100vh;
+        }
+        .container-fluid {
+            display: grid;
+            grid-template-rows: 6.1vh 1fr 6.1vh; /* 위/아래 고정, 가운데 자동 */
+            height: 100vh;
+        }
+        .top_bottom_row {
+            background-color: rgb(33, 43, 53);
+        }
+        #footerRow {
+            grid-row: 3;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col top_bottom_row"></div>
+    </div>
+    <div class="row" style="height: 100%;">
+        <div class="col-3 border-1 border-end d-flex flex-column justify-content-center"
+             style="padding: 0; height: 100%;">
+            <div class="row h-100 align-items-center m-0">
+                <div class="col ">
+                    <div class="row">
+                        <div class="col text-center">
+                            학교 이름
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col"></div>
+                        <div id="studentLoginBtn" class="col-3 border border-1 rounded text-center">
+                            로그인
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col border-1 border-end " style=" height: 100%;">2</div>
+
+        <div class="col-3" style=" height: 100%;">
+            <div class="row mt-5">
+                <div class="col mx-4">
+
+                    <div class="row">
+                        <div class="col">바로가기</div>
+                    </div>
+
+                    <div class="row mt-3">
+
+                        <div id="colJob" class="col mx-3">
+                            <div class="row">
+                                <div class="col border border-1 rounded-3 text-center">
+                                    <i class="bi bi-mortarboard" style="font-size: 1.4em"></i>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-center" style="font-size: 0.8em">
+                                    취업/창업 센터
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="colBarrierFree" class="col mx-3">
+                            <div class="row">
+                                <div class="col border border-1 rounded-3 text-center">
+                                    <i class="bi bi-mortarboard" style="font-size: 1.4em"></i>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-center" style="font-size: 0.8em">
+                                    장애학생관리 센터
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="colInternship" class="col mx-3">
+                            <div class="row">
+                                <div class="col border border-1 rounded-3 text-center">
+                                    <i class="bi bi-mortarboard" style="font-size: 1.4em"></i>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-center" style="font-size: 0.8em">
+                                    현장실습 센터
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row mt-2">
+
+                        <div id="colResidence" class="col mx-3">
+                            <div class="row">
+                                <div class="col border border-1 rounded-3 text-center">
+                                    <i class="bi bi-mortarboard" style="font-size: 1.4em"></i>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-center" style="font-size: 0.8em">
+                                    생활관
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="colLifeEdu" class="col mx-3">
+                            <div class="row">
+                                <div class="col border border-1 rounded-3 text-center">
+                                    <i class="bi bi-mortarboard" style="font-size: 1.4em"></i>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-center" style="font-size: 0.8em">
+                                    평생교육원
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col mx-3"></div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row" id="footerRow">
+        <div class="col top_bottom_row"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+</body>
+</html>
