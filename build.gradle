@@ -33,8 +33,6 @@ dependencies {
     testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.4'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-    // logback
-    implementation 'ch.qos.logback:logback-classic:1.5.16'
 
     // log4j2
     implementation 'org.slf4j:slf4j-api:2.0.16'
